@@ -1,19 +1,28 @@
 apiVersion: k3d.io/v1alpha5
 kind: Simple
 metadata:
-  name: cluster-k3d-first
+  name: cluster-k3d-hp
 servers: 1
 agents: 3
 image: rancher/k3s:v1.31.0-rc2-k3s1
 
+#registries:
+#  create:
+#    name: k3d-local-io
+#  config: |
+#    mirrors:
+#      "k3d-local-io:5000":
+#        endpoint:
+#          - http://k3d-local-io:5000 
+
 # (необязательно) если хочешь зафиксировать docker-сеть, укажи строкой:
-# network: "k3d-cluster-k3d-first"
+network: "k3d-cluster-k3d"
 
 kubeAPI:
   hostPort: "6443"
 
 volumes:
-  - volume: "$PWD/Volume:/tmp/k3dvol:shared"
+  - volume: "/home/pavel/freedom/k3d/Volume:/tmp/k3dvol:shared"
     nodeFilters:
       - server:*
       - agent:*

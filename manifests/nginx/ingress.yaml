@@ -16,7 +16,7 @@ spec:
         runAsUser: 1000
       containers:      
       - name: hello-kubernetes
-        image: k3d-local-io:42219/hello-kubernetes:1.9
+        image: registry-srv:5000/hello-kubernetes:1.9
         ports:
         - containerPort: 8080
 ---
